@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Add New Blog | Blogify</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+      <h2 class="fw-bold mb-4 text-center text-primary">✍️ Create a New Blog</h2>
+      
+      <form action="/blog" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="coverImage" class="form-label fw-semibold">Cover Image</label>
+          <input type="file" class="form-control" id="coverImage" name="coverImage" accept="image/*">
+        </div>
+
+        <div class="mb-3">
+          <label for="title" class="form-label fw-semibold">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter your blog title" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="body" class="form-label fw-semibold">Body</label>
+          <textarea class="form-control" id="body" name="body" rows="6" placeholder="Write your blog content..." required></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">Publish Blog 🚀</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
+</html>
