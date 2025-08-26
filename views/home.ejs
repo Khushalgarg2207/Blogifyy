@@ -41,7 +41,6 @@
         <div class="col">
           <div class="card h-100 shadow-sm border-0 rounded-4">
             
-            <!-- This now uses the full Cloudinary URL directly -->
             <img src="<%= blog.coverImageURL ? blog.coverImageURL : '/images/default.jpg' %>"
               class="fixed-preview-img"
               alt="Preview Image"
@@ -53,7 +52,6 @@
               </h5>
               <div class="author-info text-muted">
                 
-                <!-- This now uses the full Cloudinary URL directly -->
                 <img src="<%= blog.createdBy && blog.createdBy.profileImageURL ? blog.createdBy.profileImageURL : '/images/user_avt.png' %>" alt="Author">
                 
                 <small>By <%= blog.createdBy ? blog.createdBy.fullName : "Anonymous" %></small>

@@ -6,7 +6,6 @@ const cloudinary = require('cloudinary').v2;
 
 const router = Router();
 
-// --- CLOUDINARY CONFIGURATION ---
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -22,7 +21,6 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({ storage: storage });
-// --- END CLOUDINARY CONFIGURATION ---
 
 
 router.get('/signin', (req, res) => {
@@ -49,8 +47,6 @@ router.get('/logout', (req, res) => {
     res.clearCookie("token").redirect("/");
 });
 
-
-// --- START: UPDATED SIGNUP ROUTE WITH ENHANCED LOGGING ---
 router.post('/signup', upload.single('profileImage'), async (req, res) => {
     try {
         const { fullName, email, password } = req.body;
@@ -69,15 +65,13 @@ router.post('/signup', upload.single('profileImage'), async (req, res) => {
         return res.redirect('/');
 
     } catch (error) {
-        // This new logging is more specific and should reveal the error.
         console.error("--- SIGNUP FAILED ---");
-        console.error("Error Message:", error.message); // Print just the message
-        console.error("Full Error Stack:", error.stack); // Print the full stack trace
+        console.error("Error Message:", error.message); 
+        console.error("Full Error Stack:", error.stack);
         console.error("---------------------");
         
         return res.status(500).send("Internal Server Error. Check the logs for details.");
     }
 });
-// --- END: UPDATED SIGNUP ROUTE ---
 
 module.exports = router;
